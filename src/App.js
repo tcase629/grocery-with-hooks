@@ -1,25 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
 
-function App() {
+const App = ({}) => {
+  const [items, setItems] = useState([
+    { id: 1, item: "bananas", price: 1, complete: false},
+    { id: 2, item: "bread", price: 2, complete: false},
+    { id: 3, item: "eggs", price: 3, complete: false}
+  ])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <h1>Hi Lets Do This!!!</h1>
+    </>
+  )
 }
 
 export default App;

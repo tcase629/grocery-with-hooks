@@ -10,14 +10,39 @@ const App = ({}) => {
     { id: 5, item: "milk", price: 3, complete: false},
   ])
 
+  const getId = () => {
+    return Math.floor((1 + Math.random()) * 0x10000)
+      .toString(16)
+      .substring(1);
+  }
+
+  const addGrocery = (incommingGrocery) => {
+    let newGrocery = { id: getId(), ...incommingGrocery }
+    setGroceries([...groceries, newGrocery])
+  }
+
   const removeGrocery = (id) => {
     setGroceries(groceries.filter( g => g.id !== id))
   }
 
+  const updateGrocery = (id, incommingGrocery) => {
+    const updateGroceries = groceries.map( g => {
+      if (g.id === id) {
+      return incommingGrocery
+      }
+      return g
+    })
+    setGroceries(updateGroceries)
+  }
+
   return (
     <>
-      <GroceryForm />
-      <GroceryList groceries={groceries} removeGrocery={removeGrocery} />
+      <GroceryForm addGrocery={addGrocery} />
+      <GroceryList 
+      groceries={groceries} 
+      removeGrocery={removeGrocery}
+      updateGrocery={updateGrocery}
+      />
     </>
   )
 }

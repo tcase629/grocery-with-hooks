@@ -35,13 +35,27 @@ const App = ({}) => {
     setGroceries(updateGroceries)
   }
 
+  const groceryClick = (id) => {
+    setGroceries(groceries.map( g => {
+      if (g.id === id) {
+        return {
+          ...g, complete: !g.complete
+        }
+      }
+      return g
+    }))
+  }
+
   return (
     <>
+      <h1>Grocery List</h1>
+      <br />
       <GroceryForm addGrocery={addGrocery} />
       <GroceryList 
       groceries={groceries} 
       removeGrocery={removeGrocery}
       updateGrocery={updateGrocery}
+      groceryClick={groceryClick}
       />
     </>
   )

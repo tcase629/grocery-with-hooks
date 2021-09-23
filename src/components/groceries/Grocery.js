@@ -1,10 +1,15 @@
 import GroceryForm from "./GroceryForm";
 import { useState } from 'react';
-const Grocery = ({ id, item, complete, price, removeGrocery, updateGrocery }) => {
+const Grocery = ({ id, item, complete, price, removeGrocery, updateGrocery, groceryClick }) => {
   const [ editing, setEditing] = useState(false)
   return(
     <>
-      <h1>{item}</h1>
+      <h3
+        style={ complete ? { ...styles.grocery, ...styles.complete } : styles.grocery}
+        onClick={ () => groceryClick(id) }
+      >
+        {item}
+      </h3> 
       <p>${price}</p>
       {
         editing ?
@@ -25,5 +30,11 @@ const Grocery = ({ id, item, complete, price, removeGrocery, updateGrocery }) =>
     </>
   )
 }
+
+const styles = {
+  grocery: { cursor: 'pointer' },
+  complete: { color: 'red', textDecoration: 'line-through' }
+};
+
 
 export default Grocery;

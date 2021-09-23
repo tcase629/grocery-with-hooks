@@ -1,6 +1,6 @@
 import Grocery from './Grocery';
 
-const GroceryList = ({ groceries, removeGrocery, updateGrocery }) => {
+const GroceryList = ({ groceries, removeGrocery, updateGrocery, groceryClick }) => {
 
   return(
     <>
@@ -10,6 +10,7 @@ const GroceryList = ({ groceries, removeGrocery, updateGrocery }) => {
           {...g} 
           removeGrocery={removeGrocery} 
           updateGrocery={updateGrocery}  
+          groceryClick={groceryClick}
           />
         ))
       }
